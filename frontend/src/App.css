@@ -1,0 +1,86 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: #0D0A05;
+  color: #D4A76A;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-bottom: 1px solid #2a1f0f;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  color: #D4A76A;
+  letter-spacing: 0.2em;
+  margin: 0;
+}
+
+.resetBtn {
+  background: none;
+  border: 1px solid #3A2910;
+  color: #8B7355;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+.resetBtn:hover {
+  border-color: #D4A76A;
+  color: #D4A76A;
+}
+
+.waitingBanner {
+  background: #1a1209;
+  border-bottom: 1px solid #3A2910;
+  padding: 10px 24px;
+  text-align: center;
+  font-size: 14px;
+  color: #8B7355;
+}
+.waitingBanner strong {
+  color: #FFD700;
+  letter-spacing: 0.2em;
+  font-size: 16px;
+}
+
+.gameLayout {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px;
+  flex-wrap: wrap;
+}
+
+.leftPanel, .rightPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}

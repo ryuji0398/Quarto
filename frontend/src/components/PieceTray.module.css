@@ -1,0 +1,35 @@
+.tray {
+  background: #1a1209;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 220px;
+}
+
+.title {
+  color: #D4A76A;
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.hint {
+  color: #8B7355;
+  font-size: 12px;
+  margin: 0 0 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  justify-items: center;
+  align-items: end;
+}
+
+.slot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 56px;
+}

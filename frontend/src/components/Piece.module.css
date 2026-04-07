@@ -1,0 +1,58 @@
+/* ベース */
+.piece {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+}
+
+/* サイズ */
+.sm { width: 36px; }
+.md { width: 48px; }
+.lg { width: 60px; }
+
+/* 高さ */
+.tall.sm  { height: 44px; }
+.tall.md  { height: 58px; }
+.tall.lg  { height: 72px; }
+.short.sm { height: 28px; }
+.short.md { height: 38px; }
+.short.lg { height: 48px; }
+
+/* 形 */
+.round  { border-radius: 50%; }
+.square { border-radius: 4px; }
+
+/* 色 */
+.light { background-color: #D4A76A; border-color: #B8893E; }
+.dark  { background-color: #5C3317; border-color: #3A1F0A; }
+
+/* 中空の穴 */
+.hollow {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+/* インタラクション */
+.clickable { cursor: pointer; }
+.clickable:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.selected {
+  border-color: #FFD700 !important;
+  box-shadow: 0 0 0 3px #FFD700, 0 0 16px #FFD70099;
+  transform: translateY(-4px);
+}
+
+.highlighted {
+  border-color: #FF6B35 !important;
+  box-shadow: 0 0 0 3px #FF6B35;
+}

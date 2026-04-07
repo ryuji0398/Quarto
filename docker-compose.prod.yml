@@ -1,0 +1,29 @@
+version: "3.9"
+
+# 本番環境: 最適化ビルド、--reload なし
+# 使い方: docker-compose -f docker-compose.prod.yml up --build -d
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # バックエンドの公開URLを渡す (例: https://api.yourdomain.com)
+        - VITE_API_BASE_URL=${VITE_API_BASE_URL:-}
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
