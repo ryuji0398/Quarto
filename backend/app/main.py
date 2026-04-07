@@ -52,6 +52,7 @@ app.include_router(game.router)
 app.include_router(ws.router)
 
 
+@app.get("/")
 @app.get("/health")
 def health() -> dict:
     return {"status": "ok"}
