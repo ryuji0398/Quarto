@@ -11,7 +11,8 @@ server {
     # REST API → バックエンドへ転送
     location /api {
         proxy_pass ${BACKEND_URL};
-        proxy_set_header Host $host;
+        proxy_ssl_server_name on;
+        proxy_set_header Host $proxy_host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
@@ -20,10 +21,11 @@ server {
     # WebSocket → バックエンドへ転送
     location /ws {
         proxy_pass ${BACKEND_URL};
+        proxy_ssl_server_name on;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
-        proxy_set_header Host $host;
+        proxy_set_header Host $proxy_host;
     }
 
     # SPA: 全リクエストを index.html にフォールバック
