@@ -19,11 +19,11 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-      args:
-        # バックエンドの公開URLを渡す (例: https://api.yourdomain.com)
-        - VITE_API_BASE_URL=${VITE_API_BASE_URL:-}
     ports:
       - "80:80"
+    environment:
+      # nginx が起動時に ${BACKEND_URL} を置換する (runtime env var)
+      - BACKEND_URL=http://backend:8000
     depends_on:
       - backend
     restart: always

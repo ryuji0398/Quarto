@@ -1,18 +1,12 @@
 import { create } from "zustand";
 import type { GameState, GameMode, CpuLevel } from "../types/game";
 
-// 本番環境では VITE_API_BASE_URL にバックエンドのURLを設定する
-// 開発環境では空文字 (Vite の proxy が /api → backend:8000 に転送)
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "";
-const API = `${API_BASE}/api/games`;
+// 開発・本番ともに相対URLを使用
+// 開発: Vite の proxy が /api → backend:8000 に転送
+// 本番: nginx が /api, /ws → backend に転送
+const API = "/api/games";
 
 function buildWsUrl(gameId: string, playerNumber: 1 | 2): string {
-  if (API_BASE) {
-    // 本番: https:// → wss://、http:// → ws://
-    const wsBase = API_BASE.replace(/^https/, "wss").replace(/^http/, "ws");
-    return `${wsBase}/ws/${gameId}/${playerNumber}`;
-  }
-  // 開発: 現在のホストを使用 (Vite proxy が転送)
   const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
   return `${proto}//${window.location.host}/ws/${gameId}/${playerNumber}`;
 }
