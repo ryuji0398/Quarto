@@ -3,10 +3,10 @@ import { Piece } from "./Piece";
 import styles from "./Board.module.css";
 
 export function Board() {
-  const { game, hoveredPiece, setHoveredCell, placepiece } = useGameStore();
+  const { game, setHoveredCell, placepiece } = useGameStore();
   if (!game) return null;
 
-  const { board, phase, selected_piece, winner, winning_line, current_player, mode } = game;
+  const { board, phase, selected_piece, winner, winning_line } = game;
 
   const winningCells = new Set(
     (winning_line ?? []).map(([r, c]) => `${r}-${c}`)
